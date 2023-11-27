@@ -95,7 +95,7 @@ Foreground="Black">
 
                 <!-- Sterilisation Date -->
                 <StackPanel Orientation="Horizontal" Margin="0,05">
-                    <TextBlock Width="160" VerticalAlignment="Center" FontSize="16" Foreground="White">Sterilisation date:</TextBlock>
+                    <TextBlock Width="160" VerticalAlignment="Center" FontSize="16" Foreground="White">Sterilisation Date:</TextBlock>
                     <!-- DatePicker with rounded corners -->
                     <StackPanel Margin="64,0,0,0">
                         <DatePicker x:Name="DogSerilDate"
@@ -140,7 +140,7 @@ Foreground="Black">
 
                 <!-- First vaccine date: -->
                 <StackPanel Orientation="Horizontal" Margin="0,05">
-                    <TextBlock Width="160" VerticalAlignment="Center" FontSize="16" Foreground="White">First vaccine date:</TextBlock>
+                    <TextBlock Width="160" VerticalAlignment="Center" FontSize="16" Foreground="White">First Vaccine Date:</TextBlock>
                     <!-- DatePicker with rounded corners -->
                     <StackPanel Margin="66,0,0,0">
                         <DatePicker x:Name="DogFirstVaccDate"
@@ -179,7 +179,7 @@ Foreground="Black">
 
                 <!-- Second vaccine date: -->
                 <StackPanel Orientation="Horizontal" Margin="0,05" Width="432">
-                    <TextBlock Width="160" VerticalAlignment="Center" FontSize="16" Foreground="White">Second vaccine date:</TextBlock>
+                    <TextBlock Width="160" VerticalAlignment="Center" FontSize="16" Foreground="White">Second Vaccine Date:</TextBlock>
                     <!-- DatePicker with rounded corners -->
                     <StackPanel Margin="63,0,0,0">
                         <DatePicker x:Name="DogSecondVaccDate"
@@ -257,7 +257,7 @@ Foreground="Black">
 
                 <!-- Rabies test date -->
                 <StackPanel Orientation="Horizontal" Margin="0,05">
-                    <TextBlock Width="200" VerticalAlignment="Center" Foreground="White" FontSize="16">Rabies test:</TextBlock>
+                    <TextBlock Width="200" VerticalAlignment="Center" Foreground="White" FontSize="16">Rabies Test:</TextBlock>
                     <StackPanel Margin="29,0,0,0">
                         <ComboBox x:Name="DogRabiesTest"
                                   
@@ -278,7 +278,7 @@ SelectedIndex="0">
 
                 <!-- Rabies serial number date -->
                 <StackPanel Orientation="Horizontal" Margin="0,05">
-                    <TextBlock Width="195" VerticalAlignment="Center" FontSize="16" Foreground="White">Rabies  date:</TextBlock>
+                    <TextBlock Width="195" VerticalAlignment="Center" FontSize="16" Foreground="White">Rabies  Date:</TextBlock>
                     <!-- DatePicker with rounded corners -->
                     <StackPanel Margin="30,0,0,0" Width="182">
                         <DatePicker x:Name="DogRabiesDate"
@@ -337,7 +337,7 @@ SelectedIndex="0">
 
                 <!-- Flea treatment date issued -->
                 <StackPanel Orientation="Horizontal" Margin="0,05">
-                    <TextBlock Width="190" VerticalAlignment="Center" FontSize="16" Foreground="White">Flea treatment date:</TextBlock>
+                    <TextBlock Width="190" VerticalAlignment="Center" FontSize="16" Foreground="White">Flea Treatment Date:</TextBlock>
                     <!-- DatePicker with rounded corners -->
                     <StackPanel Margin="35,0,0,0">
                         <DatePicker x:Name="DogFleaTreatmentDate"
@@ -471,7 +471,7 @@ Foreground="Black">
 
                 <!-- Medical treatment date -->
                 <StackPanel Orientation="Horizontal" Margin="0,05">
-                    <TextBlock Width="185" VerticalAlignment="Center" FontSize="16" Foreground="White">Medical treatment date:</TextBlock>
+                    <TextBlock Width="185" VerticalAlignment="Center" FontSize="16" Foreground="White">Medical Treatment Date:</TextBlock>
                     <!-- DatePicker with rounded corners -->
                     <StackPanel Margin="80,0,0,0">
                         <DatePicker x:Name="DogMedTreatDate"
@@ -513,7 +513,7 @@ Foreground="Black">
 
                 <!-- Parvo test result -->
                 <StackPanel Orientation="Horizontal" Margin="0,05">
-                    <TextBlock Width="130" VerticalAlignment="Center" FontSize="16" Foreground="White">Parvo test result:</TextBlock>
+                    <TextBlock Width="130" VerticalAlignment="Center" FontSize="16" Foreground="White">Parvo Test Result:</TextBlock>
                     <StackPanel Margin="107,0,0,0" Width="214">
                         <ComboBox x:Name="DogParvoTestResult"
 Width="151" 
@@ -533,7 +533,7 @@ SelectedIndex="0">
 
                 <!-- Parvo test date -->
                 <StackPanel Orientation="Horizontal" Margin="0,05">
-                    <TextBlock Width="150" VerticalAlignment="Center" FontSize="16" Foreground="White">Parvo test date:</TextBlock>
+                    <TextBlock Width="150" VerticalAlignment="Center" FontSize="16" Foreground="White">Parvo Test Date:</TextBlock>
                     <!-- DatePicker with rounded corners -->
                     <StackPanel Margin="115,0,0,0">
                         <DatePicker x:Name="DogParvoTestDate"
@@ -572,7 +572,7 @@ Foreground="Black">
 
                 <!-- Distemper test result -->
                 <StackPanel Orientation="Horizontal" Margin="0,05">
-                    <TextBlock Width="165" VerticalAlignment="Center" FontSize="16" Foreground="White">Distemper test result:</TextBlock>
+                    <TextBlock Width="165" VerticalAlignment="Center" FontSize="16" Foreground="White">Distemper Test Result:</TextBlock>
                     <StackPanel Margin="104,0,0,0">
                         <ComboBox x:Name="DogDisTestRes"
 Width="151" 
@@ -591,7 +591,7 @@ SelectedIndex="0">
 
                 <!-- Distemper test date -->
                 <StackPanel Orientation="Horizontal" Margin="0,05">
-                    <TextBlock Width="150" VerticalAlignment="Center" FontSize="16" Foreground="White">Distemper test date:</TextBlock>
+                    <TextBlock Width="150" VerticalAlignment="Center" FontSize="16" Foreground="White">Distemper Test Date:</TextBlock>
                     <!-- DatePicker with rounded corners -->
                     <StackPanel Margin="116,0,0,0">
                         <DatePicker x:Name="DogDisTestDate"
