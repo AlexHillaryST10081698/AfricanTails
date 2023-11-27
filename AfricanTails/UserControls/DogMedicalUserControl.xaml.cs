@@ -23,7 +23,6 @@ namespace AfricanTails.UserControls
     public partial class DogMedicalUserControl : UserControl
     {
         //Variables 
-
         private String MedicalRecordID;
         private String AnimalID;
         public DateTime Sterilization;
