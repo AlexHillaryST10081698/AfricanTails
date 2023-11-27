@@ -1,0 +1,22 @@
+﻿<Window x:Class="AfricanTails.Windows.EditStaffWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AfricanTails.Windows"
+        mc:Ignorable="d"
+       Title="Edit Staff" Height="250" Width="350">
+    <Grid>
+        <StackPanel Margin="10">
+            <StackPanel>
+                <TextBlock Text="New Name" FontWeight="Bold" HorizontalAlignment="Left" Foreground="#888"/>
+                <TextBox x:Name="EditNameTextBox" Margin="5" Text="Enter new name" GotFocus="ClearText" LostFocus="RestoreText"/>
+            </StackPanel>
+            <StackPanel>
+                <TextBlock Text="New Surname" FontWeight="Bold" HorizontalAlignment="Left" Foreground="#888"/>
+                <TextBox x:Name="EditSurnameTextBox" Margin="5" Text="Enter new surname" GotFocus="ClearText" LostFocus="RestoreText"/>
+            </StackPanel>
+            <Button Content="Save" Click="SaveButton_Click" Background="#F39C12" Foreground="White" Margin="5"/>
+        </StackPanel>
+    </Grid>
+</Window>

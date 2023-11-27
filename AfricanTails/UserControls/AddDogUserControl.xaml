@@ -1,0 +1,377 @@
+﻿<UserControl x:Class="AfricanTails.UserControls.AddDogUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AfricanTails.UserControls"
+             HorizontalAlignment="Stretch"
+             VerticalAlignment="Stretch"
+             mc:Ignorable="d" 
+            d:DesignHeight="821" d:DesignWidth="1105">
+    <Grid>
+
+      
+            <!-- Background Image with OpacityMask -->
+            <Image Source="/Images/DogsPage.png" Stretch="Fill">
+                <Image.OpacityMask>
+                    <VisualBrush>
+                        <VisualBrush.Visual>
+                            <Rectangle Width="1" Height="1" Fill="#50000000"/>
+                            <!-- 50% opacity mask -->
+                        </VisualBrush.Visual>
+                    </VisualBrush>
+                </Image.OpacityMask>
+            </Image>
+           
+
+
+
+
+
+            <!-- Center content vertically -->
+            <Grid VerticalAlignment="Top">
+                <!-- Heading -->
+                <TextBlock Text="Add Dog to Database"
+                       HorizontalAlignment="Center"
+                       Margin="0,20,0,0"
+                       FontSize="24"
+                       FontWeight="Bold" Foreground="White"/>
+            </Grid>
+       
+
+        <StackPanel
+        Orientation="Vertical"
+        Margin="230,70,57,0">
+
+
+            <!-- Animal ID -->
+            <StackPanel Orientation="Horizontal" Margin="0,05">
+                <TextBlock Width="130" VerticalAlignment="Center" FontSize="16" Foreground="White">Animal ID:</TextBlock>
+                <StackPanel Margin="10,0,0,0">
+                    <TextBox x:Name="DogIDTxt"
+                 Width="198" 
+                 Height="37"
+                 Background="White" 
+                 BorderThickness="0" 
+                 Padding="10" 
+                 Foreground="Black">
+                        <TextBox.Template>
+                            <ControlTemplate TargetType="TextBox">
+                                <Border CornerRadius="5" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1">
+                                    <ScrollViewer x:Name="PART_ContentHost"/>
+                                </Border>
+                            </ControlTemplate>
+                        </TextBox.Template>
+                    </TextBox>
+                </StackPanel>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="0,05">
+                <TextBlock Width="130" VerticalAlignment="Center" FontSize="16" Foreground="White">Name:</TextBlock>
+                <StackPanel Margin="10,0,0,0">
+                    <TextBox x:Name="NameTxt"
+     Width="198" 
+     Height="37"
+     Background="White" 
+     BorderThickness="0" 
+     Padding="10" 
+     Foreground="Black">
+                        <TextBox.Template>
+                            <ControlTemplate TargetType="TextBox">
+                                <Border CornerRadius="5" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1">
+                                    <ScrollViewer x:Name="PART_ContentHost"/>
+                                </Border>
+                            </ControlTemplate>
+                        </TextBox.Template>
+                    </TextBox>
+                </StackPanel>
+            </StackPanel>
+
+            <!-- Microchip -->
+            <StackPanel Orientation="Horizontal" Margin="0,05">
+                <TextBlock Width="130" VerticalAlignment="Center" FontSize="16" Foreground="White">Microchip:</TextBlock>
+                <StackPanel Margin="10,0,0,0">
+                    <TextBox x:Name="DogMicroTxt"
+                             Width="200" 
+                             Height="37"
+                             Background="White" 
+                             BorderThickness="0" 
+                             Padding="10" 
+                             Foreground="Black">
+                        <TextBox.Template>
+                            <ControlTemplate TargetType="TextBox">
+                                <Border CornerRadius="5" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1">
+                                    <ScrollViewer x:Name="PART_ContentHost"/>
+                                </Border>
+                            </ControlTemplate>
+                        </TextBox.Template>
+                    </TextBox>
+                </StackPanel>
+            </StackPanel>
+
+            
+            <!-- Date of Birth -->
+            <StackPanel Orientation="Horizontal" Margin="0,05">
+                <TextBlock Width="130" VerticalAlignment="Center" FontSize="16" Foreground="White">Date Of Birth:</TextBlock>
+                <!-- DatePicker with rounded corners -->
+                <StackPanel Margin="10,0,0,0">
+                    <DatePicker x:Name="Dogdateofbirth"
+                               Width="226" 
+                               Height="42"               
+                               Background="Transparent" 
+                               BorderThickness="0" 
+                               BorderBrush="Black"
+                               Foreground="Black">
+                        <DatePicker.Resources>
+                            <Style TargetType="DatePickerTextBox">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="DatePickerTextBox">
+                                            <Border CornerRadius="5"
+                                                    Background="{TemplateBinding Background}"
+                                                    BorderThickness="{TemplateBinding BorderThickness}">
+                                                <TextBox x:Name="PART_TextBox"
+                                                         Text="{TemplateBinding Text}"
+                                                         Background="Transparent"
+                                                         BorderThickness="0"
+                                                         Foreground="{TemplateBinding Foreground}"
+                                                         Padding="10"
+                                                         IsReadOnly="{TemplateBinding IsReadOnly}"
+                                                         HorizontalAlignment="Stretch"
+                                                         VerticalAlignment="Center" />
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </DatePicker.Resources>
+                    </DatePicker>
+                </StackPanel>
+            </StackPanel>
+
+            <!-- Gender -->
+            <StackPanel Orientation="Horizontal" Margin="0,05">
+                <TextBlock Width="130" VerticalAlignment="Center" FontSize="16" Foreground="White">Gender:</TextBlock>
+                <StackPanel Margin="10,0,0,0">
+                    <TextBox x:Name="DogGenTxt"
+                 Width="200" 
+                 Height="37"
+                 Background="White" 
+                 BorderThickness="0" 
+                 Padding="10" 
+                 Foreground="Black">
+                        <TextBox.Template>
+                            <ControlTemplate TargetType="TextBox">
+                                <Border CornerRadius="5" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1">
+                                    <ScrollViewer x:Name="PART_ContentHost"/>
+                                </Border>
+                            </ControlTemplate>
+                        </TextBox.Template>
+                    </TextBox>
+                </StackPanel>
+            </StackPanel>
+
+            <!-- Colour -->
+            <StackPanel Orientation="Horizontal" Margin="0,05">
+                <TextBlock Width="130" VerticalAlignment="Center" FontSize="16" Foreground="White">Colour:</TextBlock>
+                <StackPanel Margin="10,0,0,0">
+                    <TextBox x:Name="DogColourTxt"
+                 Width="200" 
+                 Height="37"
+                 Background="White" 
+                 BorderThickness="0" 
+                 Padding="10" 
+                 Foreground="Black">
+                        <TextBox.Template>
+                            <ControlTemplate TargetType="TextBox">
+                                <Border CornerRadius="5" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1">
+                                    <ScrollViewer x:Name="PART_ContentHost"/>
+                                </Border>
+                            </ControlTemplate>
+                        </TextBox.Template>
+                    </TextBox>
+                </StackPanel>
+            </StackPanel>
+
+            <!-- Breed -->
+            <StackPanel Orientation="Horizontal" Margin="0,05">
+                <TextBlock Width="130" VerticalAlignment="Center" FontSize="16" Foreground="White">Breed:</TextBlock>
+                <StackPanel Margin="10,0,0,0">
+                    <TextBox x:Name="DogBreedTxt"
+                 Width="200" 
+                 Height="37"
+                 Background="White" 
+                 BorderThickness="0" 
+                 Padding="10" 
+                 Foreground="Black">
+                        <TextBox.Template>
+                            <ControlTemplate TargetType="TextBox">
+                                <Border CornerRadius="5" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1">
+                                    <ScrollViewer x:Name="PART_ContentHost"/>
+                                </Border>
+                            </ControlTemplate>
+                        </TextBox.Template>
+                    </TextBox>
+                </StackPanel>
+            </StackPanel>
+
+            <!-- Date of Birth -->
+            <StackPanel Orientation="Horizontal" Margin="0,05">
+                <TextBlock Width="130" VerticalAlignment="Center" FontSize="16" Foreground="White">Date Of Intake:</TextBlock>
+                <!-- DatePicker with rounded corners -->
+                <StackPanel Margin="10,0,0,0">
+                    <DatePicker x:Name="Dogdateofintake"
+                   Width="226" 
+                   Height="42"               
+                   Background="Transparent" 
+                   BorderThickness="0" 
+                   BorderBrush="Black"
+                   Foreground="Black">
+                        <DatePicker.Resources>
+                            <Style TargetType="DatePickerTextBox">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="DatePickerTextBox">
+                                            <Border CornerRadius="5"
+                                        Background="{TemplateBinding Background}"
+                                        BorderThickness="{TemplateBinding BorderThickness}">
+                                                <TextBox x:Name="PART_TextBox"
+                                             Text="{TemplateBinding Text}"
+                                             Background="Transparent"
+                                             BorderThickness="0"
+                                             Foreground="{TemplateBinding Foreground}"
+                                             Padding="10"
+                                             IsReadOnly="{TemplateBinding IsReadOnly}"
+                                             HorizontalAlignment="Stretch"
+                                             VerticalAlignment="Center" />
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </DatePicker.Resources>
+                    </DatePicker>
+                </StackPanel>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="0,05">
+                <TextBlock Width="130" VerticalAlignment="Center" FontSize="16" Foreground="White">Date Of Adoption:</TextBlock>
+                <!-- DatePicker with rounded corners -->
+                <StackPanel Margin="10,0,0,0">
+                    <DatePicker x:Name="DogdateofAdoption"
+       Width="226" 
+       Height="42"               
+       Background="Transparent" 
+       BorderThickness="0" 
+       BorderBrush="Black"
+       Foreground="Black">
+                        <DatePicker.Resources>
+                            <Style TargetType="DatePickerTextBox">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="DatePickerTextBox">
+                                            <Border CornerRadius="5"
+                            Background="{TemplateBinding Background}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                                                <TextBox x:Name="PART_TextBox"
+                                 Text="{TemplateBinding Text}"
+                                 Background="Transparent"
+                                 BorderThickness="0"
+                                 Foreground="{TemplateBinding Foreground}"
+                                 Padding="10"
+                                 IsReadOnly="{TemplateBinding IsReadOnly}"
+                                 HorizontalAlignment="Stretch"
+                                 VerticalAlignment="Center" />
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </DatePicker.Resources>
+                    </DatePicker>
+                </StackPanel>
+            </StackPanel>
+
+            <!-- ComboBox for Adult/Kitten -->
+            <StackPanel Orientation="Horizontal" Margin="0,05">
+                <TextBlock Width="130" VerticalAlignment="Center" FontSize="16" Foreground="White">Living status:</TextBlock>
+                <StackPanel Margin="10,0,0,0">
+                    <ComboBox x:Name="DogstatusComboBox"
+                      Width="200" 
+                      Height="37"
+                      Background="Transparent" 
+                      BorderThickness="0" 
+                      BorderBrush="Black"
+                      Padding="10" 
+                      Foreground="Black"
+                      SelectedIndex="0">
+                        <!-- ComboBox items -->
+                        <ComboBoxItem>Alive</ComboBoxItem>
+                        <ComboBoxItem>Deceased</ComboBoxItem>
+                    </ComboBox>
+                </StackPanel>
+            </StackPanel>
+
+
+            <!-- Add Medical Record Button -->
+            <StackPanel Orientation="Horizontal" Margin="0,05">
+                <TextBlock Width="130" VerticalAlignment="Center" FontSize="16" Foreground="White">Medical Record:</TextBlock>
+                <StackPanel Margin="10,0,0,0">
+                    <Button x:Name="ProceedToDogMedicalBtn" 
+        Width="195" 
+        Height="30" 
+        Content="Medical" 
+        Background="{StaticResource color1}" 
+        Foreground="White" 
+        VerticalAlignment="Top" Click="ProceedToDogMedicalBtn_Click">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    CornerRadius="5" 
+                                SnapsToDevicePixels="true">
+                                    <ContentPresenter
+                        Margin="2"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        RecognizesAccessKey="True"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </StackPanel>
+            </StackPanel>
+
+            <!-- Save Button -->
+
+            <StackPanel  Margin="0,20">
+                <Button x:Name="SaveDogBtn" 
+Width="300" 
+Height="30" 
+Content="Save" 
+Background="{StaticResource color1}" 
+Foreground="White" 
+VerticalAlignment="Top" Click="SaveDogBtn_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border
+            Background="{TemplateBinding Background}"
+            BorderBrush="{TemplateBinding BorderBrush}"
+            BorderThickness="{TemplateBinding BorderThickness}"
+            CornerRadius="5" 
+            SnapsToDevicePixels="true">
+                                <ContentPresenter
+                Margin="2"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                RecognizesAccessKey="True"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</UserControl>

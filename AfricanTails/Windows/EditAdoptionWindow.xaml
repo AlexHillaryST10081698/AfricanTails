@@ -1,0 +1,31 @@
+﻿<!-- EditAdoptionWindow.xaml -->
+<Window x:Class="AfricanTails.Windows.EditAdoptionWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AfricanTails.Windows"
+        mc:Ignorable="d"
+        Title="Edit Adoption" Height="300" Width="350">
+    <Grid>
+        <StackPanel Margin="10">
+            <StackPanel>
+                <TextBlock Text="New Full Name" FontWeight="Bold" HorizontalAlignment="Left" Foreground="#888"/>
+                <TextBox x:Name="EditFullNameTextBox" Margin="5" Text="" GotFocus="ClearText" LostFocus="RestoreText"/>
+            </StackPanel>
+            <StackPanel>
+                <TextBlock Text="New Contact Number" FontWeight="Bold" HorizontalAlignment="Left" Foreground="#888"/>
+                <TextBox x:Name="EditContactNumberTextBox" Margin="5" Text="" GotFocus="ClearText" LostFocus="RestoreText"/>
+            </StackPanel>
+            <StackPanel>
+                <TextBlock Text="New Email" FontWeight="Bold" HorizontalAlignment="Left" Foreground="#888"/>
+                <TextBox x:Name="EditEmailTextBox" Margin="5" Text="" GotFocus="ClearText" LostFocus="RestoreText"/>
+            </StackPanel>
+            <StackPanel>
+                <TextBlock Text="New Address" FontWeight="Bold" HorizontalAlignment="Left" Foreground="#888"/>
+                <TextBox x:Name="EditAddressTextBox" Margin="5" Text="" GotFocus="ClearText" LostFocus="RestoreText"/>
+            </StackPanel>
+            <Button Content="Save" Click="SaveButton_Click" Background="#F39C12" Foreground="White" Margin="5"/>
+        </StackPanel>
+    </Grid>
+</Window>

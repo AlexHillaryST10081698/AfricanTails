@@ -1,0 +1,55 @@
+﻿<!-- AnimalEditWindow.xaml -->
+<Window x:Class="AfricanTails.Windows.AnimalEditWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AfricanTails.Windows"
+        mc:Ignorable="d"
+        Title="AnimalEditWindow" Height="500" Width="350">
+    <Grid>
+        <StackPanel Margin="10">
+            <StackPanel>
+                <TextBlock Text="New Name" FontWeight="Bold" HorizontalAlignment="Left" Foreground="#888"/>
+                <TextBox x:Name="EditNameTextBox" Margin="5" Text="" GotFocus="ClearText" LostFocus="RestoreText"/>
+            </StackPanel>
+            <StackPanel>
+                <TextBlock Text="New Breed" FontWeight="Bold" HorizontalAlignment="Left" Foreground="#888"/>
+                <TextBox x:Name="EditBreedTextBox" Margin="5" Text="" GotFocus="ClearText" LostFocus="RestoreText"/>
+            </StackPanel>
+            <StackPanel>
+                <TextBlock Text="New Colour" FontWeight="Bold" HorizontalAlignment="Left" Foreground="#888"/>
+                <TextBox x:Name="EditColourTextBox" Margin="5" Text="" GotFocus="ClearText" LostFocus="RestoreText"/>
+            </StackPanel>
+            <StackPanel>
+                <TextBlock Text="New Sex" FontWeight="Bold" HorizontalAlignment="Left" Foreground="#888"/>
+                <TextBox x:Name="EditSexTextBox" Margin="5" Text="" GotFocus="ClearText" LostFocus="RestoreText"/>
+            </StackPanel>
+            <StackPanel>
+                <TextBlock Text="New Microchip" FontWeight="Bold" HorizontalAlignment="Left" Foreground="#888"/>
+                <TextBox x:Name="EditMicrochipTextBox" Margin="5" Text="" GotFocus="ClearText" LostFocus="RestoreText"/>
+            </StackPanel>
+            <StackPanel>
+                <TextBlock Text="New Status" FontWeight="Bold" HorizontalAlignment="Left" Foreground="#888"/>
+                <ComboBox x:Name="EditStatusComboBox" Margin="5" SelectedIndex="0">
+                    <ComboBoxItem Content="Alive"/>
+                    <ComboBoxItem Content="Deceased"/>
+                </ComboBox>
+            </StackPanel>
+            <StackPanel>
+                <TextBlock Text="New DateofBirth" FontWeight="Bold" HorizontalAlignment="Left" Foreground="#888"/>
+                <DatePicker x:Name="EditDateofBirthDatePicker" Margin="5"/>
+            </StackPanel>
+            <StackPanel>
+                <TextBlock Text="New DateAdopted" FontWeight="Bold" HorizontalAlignment="Left" Foreground="#888"/>
+                <DatePicker x:Name="EditDateAdoptionDatePicker" Margin="5"/>
+            </StackPanel>
+            <StackPanel>
+                <TextBlock Text="New DateFostered" FontWeight="Bold" HorizontalAlignment="Left" Foreground="#888"/>
+                <DatePicker x:Name="EditDateFosteredDatePicker" Margin="5"/>
+            </StackPanel>
+            <!-- Add more StackPanel elements for other properties if needed -->
+            <Button Content="Save" Click="SaveButton_Click" Background="#F39C12" Foreground="White" Margin="5"/>
+        </StackPanel>
+    </Grid>
+</Window>

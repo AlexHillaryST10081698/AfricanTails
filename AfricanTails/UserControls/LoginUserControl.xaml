@@ -1,0 +1,90 @@
+﻿<UserControl x:Class="AfricanTails.UserControls.LoginUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AfricanTails.UserControls"
+             mc:Ignorable="d" d:DesignWidth="800" Height="460">
+    <Border BorderBrush="#FFA10D" BorderThickness="1">
+        <!-- Add a Border element around the existing Grid -->
+        <Grid>
+            <!-- Background Image with OpacityMask -->
+            <Image Source="/Images/DogsAndCats.jpg" Stretch="Fill">
+                <Image.OpacityMask>
+                    <VisualBrush>
+                        <VisualBrush.Visual>
+                            <Rectangle Width="1" Height="1" Fill="#50000000"/>
+                            <!-- 50% opacity mask -->
+                        </VisualBrush.Visual>
+                    </VisualBrush>
+                </Image.OpacityMask>
+            </Image>
+
+            <!-- Login Form Container -->
+            <Grid Background="Transparent">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <!-- Adjusted this to Auto -->
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                    <!-- Added a row for the "Forgot Password" text -->
+                </Grid.RowDefinitions>
+
+                <!-- Logo or Header (Adjusted position and margins) -->
+                <Image Source="/Images/AFLogo.png" Grid.Row="0" Width="100" Height="100" HorizontalAlignment="Center" Margin="0,20,0,0"/>
+
+                <!-- Label "Login" -->
+                <Label Content="Login" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="Bold" Foreground="White"/>
+                <Label Content="Enter Your Login Credentials To Proceed." Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" Margin="289,0,0,0" Width="246"/>
+
+                <!-- Username Label -->
+                <Label Content="Username:" Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Margin="307,5,0,0" Grid.RowSpan="2"/>
+
+                <!-- Username TextBox with Icon (Transparent Background) -->
+                <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,26" Grid.RowSpan="2">
+                    <Image Source="/Images/UsernameIcon.png" Width="20" Height="20"/>
+                    <PasswordBox x:Name="PasswordTxtBox" Background="White" Width="200" Height="40" Foreground="Black" FontSize="14"/>
+                </StackPanel>
+
+                <!-- Password Label and TextBox -->
+                <Label Content="Password:" Grid.Row="4" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Margin="311,83,0,0"/>
+                <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,182" Width="220">
+                    <Image Source="/Images/PasswordIcon.png" Width="20" Height="20"/>
+                    <TextBox x:Name="UsernameTxtBox" Background="white" Width="199" Height="40" Foreground="Black" FontSize="14"/>
+                </StackPanel>
+
+                <!-- Login Button (Changed button color) -->
+                <Button x:Name="LoginBtn" Content="Login" Grid.Row="4" Background="#FFA10D" Margin="282,172,380,62" Click="LoginBtn_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="10">
+                                <!-- Adjust the CornerRadius to control the roundness -->
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+
+                <!-- Forgot Password TextBlock -->
+                <TextBlock Grid.Row="4" Text="Forgot Password" HorizontalAlignment="Left" FontWeight="Bold" Foreground="White" Margin="368,215,0,26" Width="100" RenderTransformOrigin="0.472,1.306"/>
+                <Button x:Name="SignUpBtn" Content="Sign Up" Grid.Row="4" Width="100" HorizontalAlignment="Left" Background="#FFA10D" Margin="423,172,0,62" Click="SignUpBtn_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="10">
+                                <!-- Adjust the CornerRadius to control the roundness -->
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+
+
+
+                <!-- Login Button (Changed button color) -->
+            </Grid>
+        </Grid>
+    </Border>
+</UserControl>
