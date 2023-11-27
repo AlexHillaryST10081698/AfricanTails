@@ -259,7 +259,7 @@ namespace AfricanTails.Classes
             }
         }
 
-        // Helper method to delete associated attributes from AnimalAttribute table
+        #region Delete entry in animal attribute
         private void DeleteAnimalAttributes(string animalID)
         {
             using (SQLiteConnection connection = new SQLiteConnection(AfricanTailsconnectionString))
@@ -277,6 +277,9 @@ namespace AfricanTails.Classes
                 }
             }
         }
+        #endregion
+
+        #region Edit Animal in The Database
         public void EditAnimalInDatabase(string animalID, string newName, string newBreed, string newColour, string newSex, long newMicrochip, string newStatus, DateTime newDateOfBirth, DateTime newDateAdopted, DateTime newDateFostered)
         {
             using (SQLiteConnection connection = new SQLiteConnection(AfricanTailsconnectionString))
@@ -317,6 +320,7 @@ namespace AfricanTails.Classes
                 }
             }
         }
+        #endregion
         #region Add Medical Record to Database
         public void AddMedicalRecordToDatabase(string medicalRecordID, string animalID)
         {
