@@ -67,7 +67,7 @@ namespace AfricanTails.Windows
 
         private void DashboardButton_Checked(object sender, RoutedEventArgs e)
         {
-           
+            
         }
 
         private void StaffBtn_Checked(object sender, RoutedEventArgs e)

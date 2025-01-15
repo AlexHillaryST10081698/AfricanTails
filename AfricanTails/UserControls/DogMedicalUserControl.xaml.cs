@@ -41,11 +41,14 @@ namespace AfricanTails.UserControls
         public DateTime ParvoTestDate;
         public string DistemperTest;
         public DateTime DistemperTestDate;
+
+        //--------------------------------------------------------------------------------------Constructor ----------------------------------------------------------------------------------------------------------------//
         public DogMedicalUserControl()
         {
             InitializeComponent();
         }
 
+        //Event Handler For Dog Save button for Medical Records
         private void DogMedicalSaveBtn_Click(object sender, RoutedEventArgs e)
         {
             MedicalRecordID = DogMedID.Text;
@@ -73,6 +76,8 @@ namespace AfricanTails.UserControls
             DistemperTest = (DogDisTestRes.SelectedItem as ComboBoxItem)?.Content.ToString();
             DistemperTestDate = DogDisTestDate.SelectedDate ?? DateTime.MinValue;
             DatabaseHandler DB = new DatabaseHandler();
+
+            //Exception To Check if Animal Exists
             if (!DB.AnimalIDExists(AnimalID))
             {
                 MessageBox.Show("Animal ID does not exist in the database.", "", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -87,3 +92,4 @@ namespace AfricanTails.UserControls
         }
     }
 }
+//---------------------------------------------------------------------------------------------End OF fIle ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//

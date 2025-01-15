@@ -141,6 +141,122 @@ namespace AfricanTails.Classes
             }
         }
         #endregion
+        #region Common Breeds
+        public List<KeyValuePair<string, int>> GetCommonBreeds()
+        {
+            List<KeyValuePair<string, int>> breedCountList = new List<KeyValuePair<string, int>>();
+
+            using (SQLiteConnection connection = new SQLiteConnection(AfricanTailsconnectionString))
+            {
+                connection.Open();
+
+                // SQL query to get the breed and count how many times each breed appears
+                string query = "SELECT Breed, COUNT(*) AS BreedCount " +
+                               "FROM Animal " +
+                               "GROUP BY Breed " +
+                               "ORDER BY BreedCount DESC";
+
+                using (SQLiteCommand command = new SQLiteCommand(query, connection))
+                {
+                    using (SQLiteDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            string breed = reader["Breed"].ToString();
+                            int breedCount = Convert.ToInt32(reader["BreedCount"]);
+                            breedCountList.Add(new KeyValuePair<string, int>(breed, breedCount));
+                        }
+                    }
+                }
+            }
+
+            return breedCountList;
+        }
+        #endregion
+
+        //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+        public Dictionary<string, int> GetAnimalCountBySex()
+        {
+            using (SQLiteConnection connection = new SQLiteConnection(AfricanTailsconnectionString))
+            {
+                connection.Open();
+
+                // SQL query to count animals grouped by sex
+                string query = "SELECT Sex, COUNT(*) as Count FROM AnimalAttribute GROUP BY Sex";
+
+                using (SQLiteCommand command = new SQLiteCommand(query, connection))
+                {
+                    using (SQLiteDataReader reader = command.ExecuteReader())
+                    {
+                        Dictionary<string, int> sexCounts = new Dictionary<string, int>();
+
+                        while (reader.Read())
+                        {
+                            string sex = reader["Sex"].ToString();
+                            int count = Convert.ToInt32(reader["Count"]);
+                            sexCounts[sex] = count;
+                        }
+
+                        return sexCounts;
+                    }
+                }
+            }
+        }
+
+
+        //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+        public int GetUniqueBreedCount()
+        {
+            string query = "SELECT COUNT(DISTINCT Breed) AS UniqueBreedCount FROM Animal;";
+
+            using (SQLiteConnection connection = new SQLiteConnection(AfricanTailsconnectionString))
+            {
+                connection.Open();
+
+                using (SQLiteCommand command = new SQLiteCommand(query, connection))
+                {
+                    using (SQLiteDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            return Convert.ToInt32(reader["UniqueBreedCount"]); // Return the count of unique breeds
+                        }
+                        else
+                        {
+                            return 0; // If no breeds found, return 0
+                        }
+                    }
+                }
+            }
+        }
+
+
+
+
+
+
+
+        #region Total Number Animals
+        public int GetTotalAnimalCount()
+        {
+            using (SQLiteConnection connection = new SQLiteConnection(AfricanTailsconnectionString))
+            {
+                connection.Open();
+
+                // Create a SQL command to count the total number of animals
+                using (SQLiteCommand command = new SQLiteCommand("SELECT COUNT(*) FROM Animal", connection))
+                {
+                    // Execute the SQL command and return the count
+                    return Convert.ToInt32(command.ExecuteScalar());
+                }
+            }
+        }
+        #endregion
+
         public bool AnimalIDExists(string animalID)
         {
             // Create a connection to the SQLite database
@@ -162,7 +278,7 @@ namespace AfricanTails.Classes
                 }
             }
         }
-
+        // retrieves the Animal Related Data From Database
         public List<Animal> GetAnimalData()
         {
             List<Animal> animalList = new List<Animal>();
@@ -204,6 +320,8 @@ namespace AfricanTails.Classes
 
             return animalList;
         }
+        //Retrieves Animal related Data and sorts it Alphabetically 
+        #region Sort Animal Data Alphabetically
         public List<Animal> GetAnimalDataSortedAlphabetically()
         {
             using (SQLiteConnection connection = new SQLiteConnection(AfricanTailsconnectionString))
@@ -226,7 +344,7 @@ namespace AfricanTails.Classes
                                 AnimalID = reader["AnimalID"].ToString(),
                                 Name = reader["Name"].ToString(),
                                 Breed = reader["Breed"].ToString(),
-                                // Add more properties as needed
+                                
                             };
 
                             animals.Add(animal);
@@ -237,7 +355,10 @@ namespace AfricanTails.Classes
                 }
             }
         }
+        #endregion 
 
+        // Delete Animal Related Data from The Database
+        #region Delete Animal Entry
         public void DeleteAnimal(string animalID)
         {
             using (SQLiteConnection connection = new SQLiteConnection(AfricanTailsconnectionString))
@@ -254,10 +375,11 @@ namespace AfricanTails.Classes
                     int rowsAffected = command.ExecuteNonQuery();
                 }
 
-                // Delete associated attributes from AnimalAttribute table (assuming you have one)
+                
                 DeleteAnimalAttributes(animalID);
             }
         }
+        #endregion
 
         #region Delete entry in animal attribute
         private void DeleteAnimalAttributes(string animalID)
@@ -321,6 +443,60 @@ namespace AfricanTails.Classes
             }
         }
         #endregion
+
+        #region Search for Animals in Database
+        public List<Animal> SearchAnimals(string searchValue)
+        {
+            List<Animal> animalList = new List<Animal>();
+
+            using (SQLiteConnection connection = new SQLiteConnection(AfricanTailsconnectionString))
+            {
+                connection.Open();
+
+                
+                string query = "SELECT Animal.AnimalID, Name, Breed, Colour, Sex, Microchip, Status, DateofBirth, DateAdopted, DateFostered " +
+                               "FROM Animal " +
+                               "JOIN AnimalAttribute ON Animal.AnimalID = AnimalAttribute.AnimalID " +
+                               "WHERE Animal.AnimalID = @SearchValue " +
+                               "OR Name LIKE @SearchPattern " +
+                               "OR Breed LIKE @SearchPattern " +
+                               "OR CAST(Microchip AS TEXT) LIKE @SearchPattern";
+
+                using (SQLiteCommand command = new SQLiteCommand(query, connection))
+                {
+                    
+                    command.Parameters.AddWithValue("@SearchValue", searchValue);
+                    command.Parameters.AddWithValue("@SearchPattern", $"%{searchValue}%");
+
+                    using (SQLiteDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Animal animal = new Animal
+                            {
+                                AnimalID = reader["AnimalID"].ToString(),
+                                Name = reader["Name"].ToString(),
+                                Breed = reader["Breed"].ToString(),
+                                Colour = reader["Colour"].ToString(),
+                                Sex = reader["Sex"].ToString(),
+                                Microchip = Convert.ToInt64(reader["Microchip"]),
+                                Status = reader["Status"].ToString(),
+                                DateofBirth = Convert.ToDateTime(reader["DateofBirth"]),
+                                DateAdopted = Convert.ToDateTime(reader["DateAdopted"]),
+                                DateFostered = Convert.ToDateTime(reader["DateFostered"])
+                            };
+
+                            animalList.Add(animal);
+                        }
+                    }
+                }
+            }
+
+            return animalList;
+        }
+        #endregion
+
+
         #region Add Medical Record to Database
         public void AddMedicalRecordToDatabase(string medicalRecordID, string animalID)
         {
@@ -597,6 +773,7 @@ namespace AfricanTails.Classes
         }
         #endregion
 
+        #region Check if Staff ID Exists
         public bool StaffIDExists(string staffID)
         {
             // Create a connection to the SQLite database
@@ -618,6 +795,7 @@ namespace AfricanTails.Classes
                 }
             }
         }
+        #endregion
 
         public List<Staff> SearchStaff(string searchText)
         {
@@ -652,9 +830,25 @@ namespace AfricanTails.Classes
 
             return staffList;
         }
+        #region Total Number Staff
+        public int GetTotalStaffCount()
+        {
+            using (SQLiteConnection connection = new SQLiteConnection(AfricanTailsconnectionString))
+            {
+                connection.Open();
+
+                
+                using (SQLiteCommand command = new SQLiteCommand("SELECT COUNT(*) FROM Staff", connection))
+                {
+                    // Execute the SQL command and return the count
+                    return Convert.ToInt32(command.ExecuteScalar());
+                }
+            }
+        }
+        #endregion
         public void DeleteStaffFromDatabase(string staffID)
         {
-            // Create a connection to the SQLite database
+            
             using (SQLiteConnection connection = new SQLiteConnection(AfricanTailsconnectionString))
             {
                 connection.Open();
@@ -719,6 +913,7 @@ namespace AfricanTails.Classes
                 }
             }
         }
+        #region Sort Staff Data Alphabetically 
         public List<Staff> GetStaffDataSortedAlphabetically()
         {
             List<Staff> staffList = new List<Staff>();
@@ -751,6 +946,7 @@ namespace AfricanTails.Classes
 
             return staffList;
         }
+        #endregion
 
 
 
@@ -789,7 +985,7 @@ namespace AfricanTails.Classes
 
             return adoptionList;
         }
-        // In your DatabaseHandler class
+        
         public List<Adoption> GetAdoptionData()
         {
             List<Adoption> adoptionList = new List<Adoption>();
@@ -939,7 +1135,7 @@ namespace AfricanTails.Classes
 
             return fosterList;
         }
-        // Inside your DatabaseHandler class
+        
         public List<Foster> GetFosterDataSortedByNewest()
         {
             List<Foster> fosterData = GetFosterData(); // Assuming you have a method to get all foster data
@@ -1004,7 +1200,7 @@ namespace AfricanTails.Classes
         }
 
 
-
+        // Method to Handle Searching Adoptee Details From Database
         public List<Adoption> SearchAdoptions(string searchText)
         {
             List<Adoption> adoptionList = new List<Adoption>();
@@ -1041,6 +1237,7 @@ namespace AfricanTails.Classes
 
             return adoptionList;
         }
+        // Method to Handle Deleting Adoptee Details From Database
         public void DeleteAdoption(string adoptionID)
         {
             using (SQLiteConnection connection = new SQLiteConnection(AfricanTailsconnectionString))
@@ -1056,6 +1253,7 @@ namespace AfricanTails.Classes
                 }
             }
         }
+        // Method to Handle Deleting Foster Details From Database
         public void DeleteFosterFromDatabase(string fosterID)
         {
             // Create a connection to the SQLite database
@@ -1077,3 +1275,4 @@ namespace AfricanTails.Classes
 
     }
 }
+//---------------------------------------------------------------------------------------------End of File ----------------------------------------------------------------------------------------------------------------//

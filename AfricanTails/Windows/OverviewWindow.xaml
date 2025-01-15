@@ -38,7 +38,10 @@
         <DataTemplate x:Key="AddAnimalTemplate">
             <UserControls:DashboardUserControl/>
         </DataTemplate>
-        
+        <DataTemplate x:Key="AddStatsTemplate">
+            <UserControls:StatsUserControl/>
+        </DataTemplate>
+
     </Window.Resources>
     <Grid>
         <Border CornerRadius="10"                    
@@ -168,7 +171,7 @@ Command="{Binding ShowCustomerViewCommand}" Checked="StaffBtn_Checked">
                             </StackPanel>
                         </RadioButton>
 
-                        
+
 
                         <RadioButton Style="{StaticResource menuButton}"
     Tag="{StaticResource color1}"
@@ -179,12 +182,13 @@ Command="{Binding ShowCustomerViewCommand}" Checked="StaffBtn_Checked">
                             </StackPanel>
                         </RadioButton>
                     </StackPanel>
-                    
+
                 </Border>
                 <!-- Main Section -->
                 <Border CornerRadius="0,10,10,0" Grid.Column="1" Background="Black">
                     <ContentControl x:Name="OverviewContent" Grid.Column="1">
-                        <UserControls:StatsUserControl HorizontalAlignment="Left" Margin="0,-1,0,0" VerticalAlignment="Top"/>
+                        <UserControls:StatsUserControl/>
+
 
 
                     </ContentControl>

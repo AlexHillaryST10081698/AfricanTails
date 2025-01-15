@@ -85,11 +85,11 @@
 
 
 
-                <TextBox x:Name="AnimalSerachBar" HorizontalAlignment="Left" Margin="262,84,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="640" Height="32"/>
-                <Button x:Name="AnimalSearchBtn" Content="Search" HorizontalAlignment="Left" Margin="934,85,0,0" VerticalAlignment="Top" Height="31" Width="107" Background="#FFFFA10D" Click="AnimalSearchBtn_Click"/>
+                <TextBox x:Name="AnimalSerachBar" HorizontalAlignment="Left" Margin="54,300,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="312" Height="32"/>
+                <Button x:Name="AnimalSearchBtn" Content="Search" HorizontalAlignment="Left" Margin="425,301,0,0" VerticalAlignment="Top" Height="31" Width="107" Background="#FFFFA10D" Click="AnimalSearchBtn_Click"/>
 
                 <!-- Filter ComboBox -->
-                <TextBlock Width="71" VerticalAlignment="Top" Margin="795,301,293,0" FontSize="14" Foreground="White">Filter:</TextBlock>
+                <TextBlock VerticalAlignment="Top" Margin="864,301,382,0" FontSize="14" Foreground="White">Filter:</TextBlock>
                 <ComboBox x:Name="CatsAndDodDataComboBox" HorizontalAlignment="Left" Margin="935,300,0,0" VerticalAlignment="Top" Width="200" SelectedIndex="0" SelectionChanged="AnimalDetComboBox_SelectionChanged">
                     <!-- Add your filter options here -->
                     <ComboBoxItem Content="All" />

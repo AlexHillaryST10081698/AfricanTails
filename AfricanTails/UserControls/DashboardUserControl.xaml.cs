@@ -21,7 +21,7 @@ namespace AfricanTails.UserControls
 
         private void Search_TextChanged(object sender, TextChangedEventArgs e)
         {
-
+            
         }
         private void LoadAndDisplayAnimalData()
         {
@@ -36,6 +36,22 @@ namespace AfricanTails.UserControls
         private void AnimalSearchBtn_Click(object sender, RoutedEventArgs e)
         {
             LoadAndDisplayAnimalData();
+            string searchText = AnimalSerachBar.Text;
+            if (string.IsNullOrEmpty(searchText))
+            {
+                MessageBox.Show("Please enter a search term.", "Empty Search", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            DatabaseHandler DB = new DatabaseHandler();
+            List<Animal> searchResults = DB.SearchAnimals(searchText);
+
+            // Assuming StaffDataGrid is the name of your DataGrid control
+            AnimalDatagrid.ItemsSource = searchResults;
+            if (searchResults.Count == 0)
+            {
+                MessageBox.Show("No matching Animal records found in the database.", "No Records Found", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
         }
         // Assuming you have a method to get the selected animal from the DataGrid
         private Animal GetSelectedAnimal()
